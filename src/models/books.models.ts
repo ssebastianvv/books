@@ -43,4 +43,28 @@ export interface BodyResponseCreateBook{
 export interface BodyResponseGetByID{
     message:string,
     data:Record<string,string>;
+
 }
+
+// para actualizar el libro se usa una igual a la de arriba se podria reutilizar pero es para entender el orden 
+export interface BodyrequestUpdateBook{
+    title : string,
+    author: string,
+    description: string,
+    summary: string,
+    publicationDate: string   
+}
+
+export interface BodyResponseUpdateBook{
+    message:string,
+    data:Record<string,string>;
+
+}
+
+// para eliimnar
+
+export interface BodyResponseDeleteBook{
+    message:string,
+    data:null
+}
+
