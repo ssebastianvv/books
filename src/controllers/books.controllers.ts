@@ -19,7 +19,7 @@ export class BooksController{
             method: "GET", // cuando es get no se manda body por el metodo basicamente estamos buscando en servidor entonces no se manda nada 
             headers: headers
         }
-        const response:Response = await fetch (`${this.domain}/api/vq/books?limit=${limit}&page=${page}`, reqOption)
+        const response:Response = await fetch (`${this.domain}/api/v1/books?limit=${limit}&page=${page}`, reqOption)
             console.log(response);
             if(!response.ok){  //esto hace verlo si es booleano y dependiendo de la respuesta que mande me saca el error o no 
                 throw new Error(`error al obtener libros: ${response.status}:${response.statusText}`)
@@ -50,7 +50,7 @@ export class BooksController{
             body:JSON.stringify(newBook)
         };
 
-        const response:Response = await fetch(`${this.domain}/api/v1/books`);
+        const response:Response = await fetch(`${this.domain}/api/v1/books`,reqOption);
     
         if(!response.ok){  //esto hace verlo si es booleano y dependiendo de la respuesta que mande me saca el error o no 
             throw new Error(`error al obtener libros: ${response.status}:${response.statusText}`)
@@ -76,8 +76,8 @@ async getByid(id:string,token:string):Promise<BodyResponseGetByID>{
         throw new Error(`error al obtener libros: ${response.status}:${response.statusText}`)
     }
 
-    const BodyResponseGetByID:BodyResponseGetByID = await response.json();
-    return BodyResponseGetByID;
+    const responseBodyGetByID:BodyResponseGetByID = await response.json();
+    return responseBodyGetByID;
 };
 
 
@@ -94,7 +94,7 @@ async update(idCatche:string,title:HTMLInputElement,author:HTMLInputElement,desc
 
     const headers:Record<string,string> = {
         "accept": "*/*", //esto significa que es string string y por esso se ccoloca asi 
-        "Content-type":"application/json",
+        "Content-Type":"application/json",// cambie la t
         "Authorization": `Bearer ${token}`, 
 
     };
@@ -105,7 +105,7 @@ async update(idCatche:string,title:HTMLInputElement,author:HTMLInputElement,desc
         body:JSON.stringify(updateBook)
     };
 
-    const response:Response = await fetch(`${this.domain}/api/v1/books/${idCatche}`);
+    const response:Response = await fetch(`${this.domain}/api/v1/books/${idCatche}`,reqOption); //agregue
     
     if(!response.ok){  //esto hace verlo si es booleano y dependiendo de la respuesta que mande me saca el error o no 
         throw new Error(`error al obtener libros: ${response.status}:${response.statusText}`)
@@ -123,7 +123,7 @@ async delete(id:string,token:string):Promise<BodyResponseDeleteBook>{
 
     };
     const reqOption: RequestInit={
-        method: "Delete", // cuando es get no se manda body por el metodo basicamente estamos buscando en servidor entonces no se manda nada 
+        method: "DELETE", // cuando es get no se manda body por el metodo basicamente estamos buscando en servidor entonces no se manda nada 
         headers: headers
     }
     const response : Response = await fetch(`${this.domain}/api/v1/books/${id}`,reqOption);

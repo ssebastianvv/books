@@ -6,15 +6,18 @@ export interface IBodyResponseGetAllBooks {
 
 export interface Datum {
     id:        string;
-    role:      Role;
-    name:      string;
-    lastName:  string;
-    email:     string;
-    updatedBy: null | string;
+    title:      Role;
+    author:      string;
+    description:  string;
+    summary:     string;
+    publicationDate: string;
+    createBy: string;
+    updatedBy: null;
     deletedBy: null;
     createdAt: Date;
     updatedAt: Date;
     deletedAt: null;
+    files: any[];
 }
 
 export enum Role {
