@@ -6,15 +6,18 @@ export interface IBodyResponseGetAllBooks {
 
 export interface Datum {
     id:        string;
-    role:      Role;
-    name:      string;
-    lastName:  string;
-    email:     string;
-    updatedBy: null | string;
+    title:      Role;
+    author:      string;
+    description:  string;
+    summary:     string;
+    publicationDate: string;
+    createBy: string;
+    updatedBy: null;
     deletedBy: null;
     createdAt: Date;
     updatedAt: Date;
     deletedAt: null;
+    files: any[];
 }
 
 export enum Role {
@@ -43,4 +46,28 @@ export interface BodyResponseCreateBook{
 export interface BodyResponseGetByID{
     message:string,
     data:Record<string,string>;
+
 }
+
+// para actualizar el libro se usa una igual a la de arriba se podria reutilizar pero es para entender el orden 
+export interface BodyrequestUpdateBook{
+    title : string,
+    author: string,
+    description: string,
+    summary: string,
+    publicationDate: string   
+}
+
+export interface BodyResponseUpdateBook{
+    message:string,
+    data:Record<string,string>;
+
+}
+
+// para eliimnar
+
+export interface BodyResponseDeleteBook{
+    message:string,
+    data:null
+}
+

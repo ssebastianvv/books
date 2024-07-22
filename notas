@@ -1,3 +1,10 @@
 lo que estamos haciendo al principio es un login 
 
 el toquen lo da en el curl y ayuda a entrar en los otros enpoints dependiendo del rol 
+
+{
+    "email": "prueba@prueba.pru",
+    "password": "C0ntr4S3gu++r4"
+  } 
+
+  
